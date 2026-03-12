@@ -168,6 +168,14 @@ The custom CSS renders it as a bordered, transparent box.
 - Use fenced code blocks with language tags for syntax highlighting.
 - Reference images with `![alt text](path/to/image.png)`.
 
+**Highlighting important keywords:**
+- For especially important keywords, numbers, or proper nouns in body slide text, wrap them with the following HTML span tag:
+  ```html
+  <span style="color: #2563EB; font-weight: bold;">強調テキスト</span>
+  ```
+- Limit highlights to **1–3 per slide** — overuse reduces readability.
+- **Do not** apply highlight spans to title lines (`##`); titles are already visually distinct.
+
 ---
 
 ### ③ References Slide (body slide, placed immediately before the closing slide)
