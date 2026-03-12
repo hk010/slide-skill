@@ -1,0 +1,143 @@
+/* Marp Custom Theme */
+/* Place this file at .claude/skills/slide-maker/theme.css */
+/* Load with: npx @marp-team/marp-cli slides.md --theme .claude/skills/slide-maker/theme.css */
+
+@import 'default';
+
+/* ─── Global variables ─────────────────────────────────────────── */
+:root {
+  --color-bg:          #F2F2F2;
+  --color-text:        #333333;
+  --color-border:      #AAAAAA;
+  --color-confidential:#999999;
+}
+
+/* ─── Base slide ───────────────────────────────────────────────── */
+section {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: sans-serif;
+  padding: 40px 50px 60px;
+  position: relative;
+}
+
+/* ─── Dummy LOGO (top-right) — body slides only ────────────────── */
+section::before {
+  content: 'LOGO';
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  width: 70px;
+  height: 30px;
+  border: 1.5px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  color: var(--color-border);
+  text-align: center;
+  line-height: 30px;
+}
+
+/* ─── CONFIDENTIAL (bottom-left) — body slides only ───────────── */
+section::after {
+  content: 'CONFIDENTIAL';
+  position: absolute;
+  bottom: 18px;
+  left: 30px;
+  font-size: 10px;
+  color: var(--color-confidential);
+  letter-spacing: 0.05em;
+}
+
+/* ─── Page number — body slides only ──────────────────────────── */
+section.paginate-visible > footer,
+section[data-marpit-pagination]::after {
+  /* Marp injects pagination via its own mechanism; keep defaults */
+}
+
+/* ─── Summary box (body slides) ───────────────────────────────── */
+/* Usage: place a blockquote at the bottom of each body slide.
+   Marp renders > text as <blockquote>. */
+section blockquote {
+  border: 1.5px solid var(--color-border);
+  background: transparent;
+  padding: 8px 16px;
+  margin: 16px 0 0;
+  font-size: 0.85em;
+  color: var(--color-text);
+  border-radius: 2px;
+}
+
+section blockquote::before,
+section blockquote::after {
+  content: none; /* remove any theme quote decorators */
+}
+
+/* ─── Cover slide (_class: cover) ─────────────────────────────── */
+section.cover {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 60px;
+}
+
+/* Hide LOGO and CONFIDENTIAL on cover */
+section.cover::before,
+section.cover::after {
+  content: none;
+}
+
+/* Hide page number on cover */
+section.cover footer,
+section.cover > header {
+  display: none;
+}
+
+section.cover h1 {
+  font-size: 2.2em;
+  margin-bottom: 0.4em;
+  color: var(--color-text);
+}
+
+section.cover p {
+  font-size: 1em;
+  color: var(--color-text);
+  margin: 0.2em 0;
+}
+
+/* ─── Closing slide (_class: closing) ─────────────────────────── */
+section.closing {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 60px;
+}
+
+/* Hide LOGO pseudo and CONFIDENTIAL on closing */
+section.closing::before,
+section.closing::after {
+  content: none;
+}
+
+/* Hide page number on closing */
+section.closing footer,
+section.closing > header {
+  display: none;
+}
+
+/* Big LOGO box in the center of closing slide */
+section.closing .logo-box {
+  width: 160px;
+  height: 80px;
+  border: 2px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8em;
+  color: var(--color-border);
+}
