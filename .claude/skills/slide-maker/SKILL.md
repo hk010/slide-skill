@@ -3,7 +3,8 @@
 ## Overview
 
 This skill generates presentation slides from Markdown using [Marp](https://marp.app/).
-It creates well-structured, visually appealing slideshows and exports them to HTML, PDF, or PPTX.
+It creates well-structured, visually consistent slideshows with a custom CSS theme
+and exports them to HTML, PDF, or PPTX.
 
 ## Trigger Conditions
 
@@ -21,9 +22,11 @@ Before generating slides, clarify the following if not already specified:
 
 - **Topic / content**: What should the slides cover?
 - **Output format**: HTML (default), PDF, or PPTX
-- **Theme**: `default`, `gaia`, or `uncover` (default: `default`)
 - **Output filename**: e.g. `slides.html` (default: same basename as the `.md` file)
 - **Existing Markdown**: If the user has existing content, use it as the source
+
+> **Theme is always the custom CSS theme** at `.claude/skills/slide-maker/theme.css`.
+> Do not use Marp's built-in themes (`default`, `gaia`, `uncover`).
 
 ### 2. Install Marp CLI (if not already installed)
 
@@ -39,125 +42,238 @@ npm install -g @marp-team/marp-cli
 
 ### 3. Create the Markdown File
 
-Write a `.md` file with a valid Marp front matter block and slide separators (`---`).
+Write a `.md` file using the **three mandatory slide types** described below.
+Always load the custom theme via the front matter.
+
+**Mandatory front matter:**
+
+```markdown
+---
+marp: true
+theme: custom
+paginate: true
+style: |
+  @import url('.claude/skills/slide-maker/theme.css');
+---
+```
+
+> Alternatively, pass the theme file via CLI with
+> `--theme .claude/skills/slide-maker/theme.css`.
+
+---
+
+## Slide Types (REQUIRED — always use all three)
+
+### ① Cover Slide (`_class: cover`)
+
+- Use **once** at the beginning of the deck.
+- Displays the presentation title (large, centered) and author / date below it.
+- Logo, page number, and CONFIDENTIAL label are **not shown**.
+
+```markdown
+---
+marp: true
+theme: custom
+paginate: true
+---
+
+<!-- _class: cover -->
+
+# Presentation Title
+
+Author Name
+2026-03-12
+```
+
+---
+
+### ② Body Slides (default, no special class)
+
+Use for all content slides. **Every body slide must include all four elements:**
+
+| Element | Position | Description |
+|---|---|---|
+| Dummy LOGO | Top-right | Rectangle border containing the text "LOGO" |
+| Page number | Bottom-right | Marp's built-in `paginate` feature |
+| CONFIDENTIAL | Bottom-left | Font size 10 px, color #999999 |
+| Summary box | Below body content | Borderless-background box (`>` blockquote) with a one-sentence summary of the slide |
+
+**The summary box is mandatory and must never be omitted.**
+Write it as a Markdown blockquote (`> ...`) at the end of the slide content.
+The custom CSS renders it as a bordered, transparent box.
 
 **Template:**
 
 ```markdown
 ---
-marp: true
-theme: default
-paginate: true
----
 
-# Title Slide
-
-Subtitle or author name
-
----
-
-## Slide 2: Key Point
+## Slide Title
 
 - Bullet point A
 - Bullet point B
 - Bullet point C
 
----
-
-## Slide 3: Another Section
-
-Content goes here.
-
----
-
-## Summary
-
-- Point 1
-- Point 2
-- Point 3
+> One-sentence summary of this slide's key message.
 ```
 
-**Front matter options:**
+**Rules:**
+- One idea per slide — keep slides focused and uncluttered.
+- Use `##` for slide titles; reserve `#` for the cover slide only.
+- Limit bullet points to 3–5 items per slide.
+- Add speaker notes with `<!-- ... -->` comments below slide content when helpful.
+- Use fenced code blocks with language tags for syntax highlighting.
+- Reference images with `![alt text](path/to/image.png)`.
 
-| Key | Values | Description |
-|---|---|---|
-| `marp` | `true` | Required — enables Marp processing |
-| `theme` | `default` / `gaia` / `uncover` | Visual theme |
-| `paginate` | `true` / `false` | Show page numbers |
-| `backgroundColor` | CSS color | Slide background color |
-| `color` | CSS color | Text color |
-| `size` | `16:9` / `4:3` | Aspect ratio |
+---
 
-Per-slide directives (placed at the top of a slide, after `---`):
+### ③ Closing Slide (`_class: closing`)
+
+- Use **once** at the end of the deck.
+- Displays only a large LOGO box (border + "LOGO" text) centered on the slide.
+- No other elements (no title, no bullets, no logo in corner, no page number, no CONFIDENTIAL).
 
 ```markdown
 ---
-<!-- _class: lead -->
-<!-- _backgroundColor: #1e3a5f -->
-<!-- _color: white -->
 
-# Hero Slide
+<!-- _class: closing -->
+
+<div class="logo-box">LOGO</div>
 ```
 
-### 4. Generate the Output
+---
 
-Run Marp CLI to produce the output file:
+## Color Theme (Custom CSS)
+
+The custom theme is stored at `.claude/skills/slide-maker/theme.css`.
+
+| Role | Value |
+|---|---|
+| Background | `#F2F2F2` (light gray) |
+| Body text | `#333333` (charcoal gray) |
+| Box border / LOGO border | `#AAAAAA` |
+| CONFIDENTIAL text | `#999999`, 10 px |
+
+Do **not** override these colors inline in the Markdown unless the user explicitly requests it.
+
+---
+
+## Full Slide Template
+
+```markdown
+---
+marp: true
+theme: custom
+paginate: true
+---
+
+<!-- _class: cover -->
+
+# Presentation Title
+
+Author Name
+2026-03-12
+
+---
+
+## First Topic
+
+- Key point 1
+- Key point 2
+- Key point 3
+
+> Summary: This slide covers the three key points of the first topic.
+
+---
+
+## Second Topic
+
+- Detail A
+- Detail B
+- Detail C
+
+> Summary: Details A through C together form the second major theme.
+
+---
+
+<!-- _class: closing -->
+
+<div class="logo-box">LOGO</div>
+```
+
+---
+
+## Generate Output
+
+Run Marp CLI, always specifying the custom theme file:
 
 ```bash
 # HTML output (default)
-npx @marp-team/marp-cli slides.md --output slides.html
+npx @marp-team/marp-cli slides.md \
+  --theme .claude/skills/slide-maker/theme.css \
+  --output slides.html
 
 # PDF output
-npx @marp-team/marp-cli slides.md --output slides.pdf --pdf
+npx @marp-team/marp-cli slides.md \
+  --theme .claude/skills/slide-maker/theme.css \
+  --output slides.pdf --pdf
 
 # PPTX output
-npx @marp-team/marp-cli slides.md --output slides.pptx --pptx
-
-# Specify a theme
-npx @marp-team/marp-cli slides.md --theme gaia --output slides.html
+npx @marp-team/marp-cli slides.md \
+  --theme .claude/skills/slide-maker/theme.css \
+  --output slides.pptx --pptx
 
 # Watch mode (auto-rebuild on save)
-npx @marp-team/marp-cli slides.md --watch --output slides.html
+npx @marp-team/marp-cli slides.md \
+  --theme .claude/skills/slide-maker/theme.css \
+  --watch --output slides.html
 ```
 
-### 5. Report Results
+**Never** omit `--theme .claude/skills/slide-maker/theme.css` from the CLI command.
+
+---
+
+## Report Results
 
 After generation, tell the user:
 - The path to the output file
-- How many slides were created
+- How many slides were created (cover + body slides + closing)
 - How to open or share the file
 - Any warnings from the Marp CLI output
+
+---
 
 ## Example Workflow
 
 **User:** "Create a 5-slide presentation about climate change in PDF format."
 
 **Steps:**
-1. Create `climate-change.md` with Marp front matter and 5 slides covering the topic
-2. Run `npx @marp-team/marp-cli climate-change.md --output climate-change.pdf --pdf`
-3. Report: "Generated `climate-change.pdf` with 5 slides."
+1. Create `climate-change.md` with:
+   - 1 cover slide
+   - 3 body slides (each with a summary blockquote)
+   - 1 closing slide
+2. Run:
+   ```bash
+   npx @marp-team/marp-cli climate-change.md \
+     --theme .claude/skills/slide-maker/theme.css \
+     --output climate-change.pdf --pdf
+   ```
+3. Report: "Generated `climate-change.pdf` with 5 slides (1 cover, 3 body, 1 closing)."
 
-## Slide Writing Guidelines
-
-- **One idea per slide** — keep slides focused and uncluttered
-- **Use headings** (`##`) for slide titles; use `#` only on the title slide
-- **Limit bullet points** — 3–5 items per slide maximum
-- **Add speaker notes** with `<!-- ... -->` comments below slide content when helpful
-- **Use code blocks** with language tags for syntax highlighting
-- **Images**: reference local files or URLs — `![alt text](path/to/image.png)`
-- **Separate slides** with `---` on its own line
+---
 
 ## Error Handling
 
 | Error | Resolution |
 |---|---|
-| `marp: command not found` | Run with `npx @marp-team/marp-cli` instead of `marp` |
-| PDF generation fails | Install Chromium: `npx @marp-team/marp-cli --allow-local-files` or install `puppeteer` |
-| Images not found | Use absolute paths or ensure images are in the same directory as the `.md` file |
-| Theme not applied | Confirm the theme name is one of `default`, `gaia`, `uncover` |
+| `marp: command not found` | Use `npx @marp-team/marp-cli` instead of `marp` |
+| PDF generation fails | Try `--allow-local-files`; install Chromium or `puppeteer` |
+| Images not found | Use absolute paths or place images alongside the `.md` file |
+| Theme not applied | Verify path to `theme.css`; pass with `--theme` flag |
+| Summary box not styled | Confirm `theme.css` is loaded and the blockquote `>` syntax is used |
 
 ## Notes
 
 - Marp requires Node.js 18+. Verify with `node --version`.
-- For custom CSS themes, create a `.css` file and reference it with `--theme path/to/theme.css`.
-- For advanced layouts, use Marp's [Marpit](https://marpit.marp.app/) directives.
+- The custom theme file is at `.claude/skills/slide-maker/theme.css`.
+  Do not delete or rename it; it is required for all slide generation.
+- For advanced layouts, refer to Marp's [Marpit](https://marpit.marp.app/) directives.
