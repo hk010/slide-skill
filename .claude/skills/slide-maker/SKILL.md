@@ -28,7 +28,51 @@ Before generating slides, clarify the following if not already specified:
 > **Theme is always the custom CSS theme** at `.claude/skills/slide-maker/theme.css`.
 > Do not use Marp's built-in themes (`default`, `gaia`, `uncover`).
 
-### 2. Install Marp CLI (if not already installed)
+### 2. Fact-Check Key Claims
+
+Before writing any slide content, verify the factual accuracy of information to be included.
+
+#### Step 1 — Identify key facts to verify
+
+From the topic and content, extract items that require verification:
+
+- **Numerical data / statistics** (e.g., benchmark scores, pricing, release dates)
+- **Proper nouns** (product names, company names, people's names)
+- **Causal claims** (statements like "X caused Y" or "because of X, Y happened")
+
+#### Step 2 — Search for each fact (if web search is available)
+
+For every identified fact, perform a web search to confirm it:
+
+- **First priority**: Official websites and official documentation
+- **Second priority**: Reputable news outlets and specialist media
+- Record the URL and the confirmed content for each search result.
+
+#### Step 3 — Classify information into three tiers
+
+| Status | Criteria |
+|---|---|
+| ✅ Confirmed | Supported by multiple independent sources |
+| ⚠️ Caution | Only one source found, or information may be outdated |
+| ❌ Unusable | No corroborating sources found, or sources contradict each other |
+
+#### Step 4 — Apply classification rules to slide content
+
+- Use **only ✅ Confirmed** information in slides.
+- If ⚠️ Caution information is used, add an inline note (e.g., "※ Source is limited; treat as provisional").
+- **Exclude ❌ Unusable** information from all slides entirely.
+
+#### Step 5 — Report to the user before generating slides
+
+After completing fact-checking, report the following to the user **before** proceeding:
+
+- A list of the facts that were verified
+- A list of the URLs referenced
+- Any information that was excluded and the reason why
+
+---
+
+### 3. Install Marp CLI (if not already installed)
 
 Check whether `@marp-team/marp-cli` is available and install it if needed:
 
@@ -40,7 +84,7 @@ npx @marp-team/marp-cli --version 2>/dev/null || echo "not found"
 npm install -g @marp-team/marp-cli
 ```
 
-### 3. Create the Markdown File
+### 4. Create the Markdown File
 
 Write a `.md` file using the **three mandatory slide types** described below.
 Always load the custom theme via the front matter.
@@ -62,7 +106,7 @@ style: |
 
 ---
 
-## Slide Types (REQUIRED — always use all three)
+## Slide Types (REQUIRED — always use all four)
 
 ### ① Cover Slide (`_class: cover`)
 
@@ -126,7 +170,30 @@ The custom CSS renders it as a bordered, transparent box.
 
 ---
 
-### ③ Closing Slide (`_class: closing`)
+### ③ References Slide (body slide, placed immediately before the closing slide)
+
+- Use **once**, as the **second-to-last** slide (immediately before the closing slide).
+- Lists all URLs and sources used during fact-checking as bullet points.
+- Uses the **same layout as a body slide** (no special `_class`).
+- The summary box must read: **「本資料の参考文献一覧」**.
+
+```markdown
+---
+
+## 参考文献
+
+- [Source Title 1](https://example.com/1) — brief description of what was confirmed
+- [Source Title 2](https://example.com/2) — brief description of what was confirmed
+- [Source Title 3](https://example.com/3) — brief description of what was confirmed
+
+> 本資料の参考文献一覧
+```
+
+> If no web search was performed (tool not available), omit this slide.
+
+---
+
+### ④ Closing Slide (`_class: closing`)
 
 - Use **once** at the end of the deck.
 - Displays only a large LOGO box (border + "LOGO" text) centered on the slide.
@@ -195,6 +262,15 @@ Author Name
 
 ---
 
+## 参考文献
+
+- [Source Title 1](https://example.com/1) — brief description of what was confirmed
+- [Source Title 2](https://example.com/2) — brief description of what was confirmed
+
+> 本資料の参考文献一覧
+
+---
+
 <!-- _class: closing -->
 
 <div class="logo-box">LOGO</div>
@@ -247,17 +323,21 @@ After generation, tell the user:
 **User:** "Create a 5-slide presentation about climate change in PDF format."
 
 **Steps:**
-1. Create `climate-change.md` with:
+1. Identify key facts to verify (e.g., temperature rise figures, CO₂ levels, IPCC report dates).
+2. Search the web for each fact; classify as ✅ / ⚠️ / ❌.
+3. Report fact-check results and referenced URLs to the user.
+4. Create `climate-change.md` with:
    - 1 cover slide
-   - 3 body slides (each with a summary blockquote)
+   - 3 body slides (each with a summary blockquote, using only ✅ Confirmed facts)
+   - 1 references slide (listing all URLs used)
    - 1 closing slide
-2. Run:
+5. Run:
    ```bash
    npx @marp-team/marp-cli climate-change.md \
      --theme .claude/skills/slide-maker/theme.css \
      --output climate-change.pdf --pdf
    ```
-3. Report: "Generated `climate-change.pdf` with 5 slides (1 cover, 3 body, 1 closing)."
+6. Report: "Generated `climate-change.pdf` with 6 slides (1 cover, 3 body, 1 references, 1 closing)."
 
 ---
 
