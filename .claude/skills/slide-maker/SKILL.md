@@ -86,6 +86,14 @@ npm install -g @marp-team/marp-cli
 
 ### 4. Create the Markdown File
 
+**Always save both the `.md` source and output file (`.html`, `.pdf`, or `.pptx`) inside the `slides/` folder** at the project root. Create the folder if it does not exist.
+
+```
+slides/
+  topic-name.md
+  topic-name.html
+```
+
 Write a `.md` file using the **three mandatory slide types** described below.
 Always load the custom theme via the front matter.
 
@@ -337,26 +345,32 @@ Author Name
 Run Marp CLI, always specifying the custom theme file:
 
 ```bash
-# HTML output (default)
-npx @marp-team/marp-cli slides.md \
+# HTML output (default) — always output to slides/ folder
+npx @marp-team/marp-cli slides/topic-name.md \
   --theme .claude/skills/slide-maker/theme.css \
-  --output slides.html
+  --html \
+  --output slides/topic-name.html
 
 # PDF output
-npx @marp-team/marp-cli slides.md \
+npx @marp-team/marp-cli slides/topic-name.md \
   --theme .claude/skills/slide-maker/theme.css \
-  --output slides.pdf --pdf
+  --html \
+  --output slides/topic-name.pdf --pdf
 
 # PPTX output
-npx @marp-team/marp-cli slides.md \
+npx @marp-team/marp-cli slides/topic-name.md \
   --theme .claude/skills/slide-maker/theme.css \
-  --output slides.pptx --pptx
+  --html \
+  --output slides/topic-name.pptx --pptx
 
 # Watch mode (auto-rebuild on save)
-npx @marp-team/marp-cli slides.md \
+npx @marp-team/marp-cli slides/topic-name.md \
   --theme .claude/skills/slide-maker/theme.css \
-  --watch --output slides.html
+  --html \
+  --watch --output slides/topic-name.html
 ```
+
+> **Note**: Always run these commands from the **project root** so that the `--theme` path resolves correctly. Always include `--html` to enable inline SVG rendering.
 
 **Never** omit `--theme .claude/skills/slide-maker/theme.css` from the CLI command.
 
@@ -380,18 +394,19 @@ After generation, tell the user:
 1. Identify key facts to verify (e.g., temperature rise figures, CO₂ levels, IPCC report dates).
 2. Search the web for each fact; classify as ✅ / ⚠️ / ❌.
 3. Report fact-check results and referenced URLs to the user.
-4. Create `climate-change.md` with:
+4. Create `slides/climate-change.md` with:
    - 1 cover slide
    - 3 body slides (each with a summary blockquote, using only ✅ Confirmed facts)
    - 1 references slide (listing all URLs used)
    - 1 closing slide
 5. Run:
    ```bash
-   npx @marp-team/marp-cli climate-change.md \
+   npx @marp-team/marp-cli slides/climate-change.md \
      --theme .claude/skills/slide-maker/theme.css \
-     --output climate-change.pdf --pdf
+     --html \
+     --output slides/climate-change.pdf --pdf
    ```
-6. Report: "Generated `climate-change.pdf` with 6 slides (1 cover, 3 body, 1 references, 1 closing)."
+6. Report: "Generated `slides/climate-change.pdf` with 6 slides (1 cover, 3 body, 1 references, 1 closing)."
 
 ---
 
