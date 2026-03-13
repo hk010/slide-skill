@@ -7,133 +7,164 @@ paginate: true
 <!-- _class: cover -->
 
 # OpenAI GPTモデルの進化
+## GPT-1 から GPT-5 まで
 
-GPT-1 から GPT-5 まで
-2026-03-12
-
----
-
-## GPTモデル 年表概要
-
-- **2018年** — GPT-1: トランスフォーマーによる生成型事前学習の幕開け
-- **2019年** — GPT-2: 安全性懸念から段階的公開された流暢な文章生成モデル
-- **2020年** — GPT-3: 175Bパラメータのスケールで「few-shot学習」を実現
-- **2022年** — GPT-3.5 / ChatGPT: RLHFを取り入れ対話AIが一般公開
-- **2023年** — GPT-4: テキスト＋画像のマルチモーダル対応と高度な推論
-- **2025年** — GPT-5: 統合マルチモーダル・自動ルーティング・大幅幻覚減少
-
-> GPTシリーズは2018年から2025年にかけてパラメータ数・能力・安全性の面で急速に進化した。
+2026-03-13
 
 ---
 
-## GPT-1（2018年）
+## GPTとは？
 
-- **発表**: 2018年（OpenAI初の大規模言語モデル）
-- **パラメータ数**: <span style="color: #2563EB; font-weight: bold;">1億1700万（117M）</span>
-- **アーキテクチャ**: Transformerへの生成的事前学習を初めて適用
-- **特徴**:
-  - 教師なし事前学習 → タスク別ファインチューニングという<span style="color: #2563EB; font-weight: bold;">2段階手法</span>を確立
-  - 自然言語の構造・パターンを大量テキストから学習
-  - 当時の主要NLPベンチマークで最高水準を記録
+- **GPT**（Generative Pre-trained Transformer）はOpenAIが開発する大規模言語モデルのシリーズ
+- **Transformer**アーキテクチャをベースに、大量のテキストデータで事前学習
+- 2018年の初代GPT-1から、わずか<span style="color: #2563EB; font-weight: bold;">7年</span>でGPT-5まで急速に進化
+- 各世代でパラメータ数・能力・安全性が大幅に向上
 
-> GPT-1はTransformerを使った「事前学習→微調整」パラダイムを初めて実証した先駆的モデルである。
+<svg width="580" height="100">
+  <rect x="10" y="30" width="80" height="40" rx="6" fill="#4A5568"/>
+  <text x="50" y="55" text-anchor="middle" fill="white" font-size="13">GPT-1</text>
+  <text x="103" y="55" text-anchor="middle" fill="#AAAAAA" font-size="20">→</text>
+  <rect x="120" y="30" width="80" height="40" rx="6" fill="#4A5568"/>
+  <text x="160" y="55" text-anchor="middle" fill="white" font-size="13">GPT-2</text>
+  <text x="213" y="55" text-anchor="middle" fill="#AAAAAA" font-size="20">→</text>
+  <rect x="230" y="30" width="80" height="40" rx="6" fill="#4A5568"/>
+  <text x="270" y="55" text-anchor="middle" fill="white" font-size="13">GPT-3/3.5</text>
+  <text x="323" y="55" text-anchor="middle" fill="#AAAAAA" font-size="20">→</text>
+  <rect x="340" y="30" width="80" height="40" rx="6" fill="#4A5568"/>
+  <text x="380" y="55" text-anchor="middle" fill="white" font-size="13">GPT-4</text>
+  <text x="433" y="55" text-anchor="middle" fill="#AAAAAA" font-size="20">→</text>
+  <rect x="450" y="30" width="80" height="40" rx="6" fill="#2563EB"/>
+  <text x="490" y="55" text-anchor="middle" fill="white" font-size="13">GPT-5</text>
+</svg>
 
----
-
-## GPT-2（2019年2月）
-
-- **発表**: <span style="color: #2563EB; font-weight: bold;">2019年2月</span>（フルモデルは同年11月に段階公開）
-- **パラメータ数**: <span style="color: #2563EB; font-weight: bold;">15億（1.5B）</span>（GPT-1の約13倍）
-- **学習データ**: WebText（800万件の高品質Webページ）
-- **特徴**:
-  - ゼロショット学習に対応し、明示的な訓練なしにタスクを実行
-  - 複数段落にわたる文脈の一貫した文章生成を実現
-  - 誤情報生成リスクを懸念し、OpenAIが<span style="color: #2563EB; font-weight: bold;">段階的リリース</span>を初採用
-
-> GPT-2はその流暢な文章生成能力が社会問題化し、AI安全性に関する世界的議論の端緒となった。
-
----
-
-## GPT-3（2020年5月）
-
-- **発表**: <span style="color: #2563EB; font-weight: bold;">2020年5月28日</span>（API公開: 2020年6月11日）
-- **パラメータ数**: <span style="color: #2563EB; font-weight: bold;">1750億（175B）</span>（GPT-2の約117倍）
-- **学習データ**: Common Crawl・WebText2・書籍・Wikipediaを混合
-- **特徴**:
-  - 「<span style="color: #2563EB; font-weight: bold;">Few-Shot学習</span>」を実現：数例を示すだけで多様なタスクに対応
-  - 文章作成・Q&A・コード生成など幅広いタスクで高精度を達成
-  - LLM（大規模言語モデル）時代の到来を象徴するパラダイムシフト
-
-> GPT-3はスケールアップによるfew-shot学習能力で、ファインチューニングなしに多用途に対応できることを証明した。
+> GPTシリーズはAI技術の急速な進化を象徴するOpenAIの代表的なモデル群である。
 
 ---
 
-## GPT-3.5 / ChatGPT（2022年）
+## GPT-1：すべての始まり（2018年6月）
 
-- **発表**: GPT-3.5系: 2022年3月 / ChatGPT: <span style="color: #2563EB; font-weight: bold;">2022年11月30日</span>
-- **パラメータ数**: 非公開
-- **特徴**:
-  - <span style="color: #2563EB; font-weight: bold;">RLHF（人間のフィードバックによる強化学習）</span>を導入
-  - 対話フローへの最適化・不適切リクエストの拒否能力を向上
-  - ChatGPTとして公開後、5日間で100万ユーザー獲得
-  - 2023年2月には<span style="color: #2563EB; font-weight: bold;">史上最速</span>で月間ユーザー1億人を突破
+- **発表日**：<span style="color: #2563EB; font-weight: bold;">2018年6月</span>（論文「Improving Language Understanding by Generative Pre-Training」）
+- **パラメータ数**：<span style="color: #2563EB; font-weight: bold;">1億1700万（117M）</span>
+- TransformerアーキテクチャをNLP（自然言語処理）に初めて本格適用
+- **教師なし事前学習 → 教師ありファインチューニング**という二段階学習を提唱
+- BooksCorpus（約8億語）で事前学習し、当時の主要NLPベンチマークで最高水準を記録
 
-> GPT-3.5はRLHFにより対話型AIの実用性を大幅に高め、AIを一般社会に広めた歴史的転換点となった。
+> GPT-1はTransformerを用いた生成的事前学習の有効性を初めて示した、GPTシリーズの礎となるモデルである。
 
 ---
 
-## GPT-4（2023年3月）
+## GPT-2：テキスト生成の衝撃（2019年2月）
 
-- **発表**: <span style="color: #2563EB; font-weight: bold;">2023年3月14日</span>
-- **パラメータ数**: 非公開
-- **特徴**:
-  - <span style="color: #2563EB; font-weight: bold;">マルチモーダル対応</span>: テキストと画像の両方を処理・理解
-  - 推論能力・事実正確性・安全性を大幅強化
-  - 各種専門試験（司法試験・医師試験等）で上位成績を達成
-  - Microsoft Copilot・GitHub Copilot・Khan Academy等に統合
-- **GPT-4o** (2024年5月): テキスト・画像・音声のリアルタイム統合処理を実現
+- **発表日**：<span style="color: #2563EB; font-weight: bold;">2019年2月14日</span>（フルモデルは同年11月に段階公開）
+- **パラメータ数**：<span style="color: #2563EB; font-weight: bold;">15億（1.5B）</span> ― GPT-1の約13倍
+- WebTextデータセット（約40GBのWebページ800万件）で学習
+- タスク固有の学習なし（**ゼロショット**）で高品質なテキスト生成を実現
+- 悪用リスクを懸念し、OpenAIが<span style="color: #2563EB; font-weight: bold;">段階的リリース</span>という慎重なアプローチを初採用
+- フェイクニュース生成リスクが社会的に議論される契機となった
 
-> GPT-4はマルチモーダル能力と高度な推論で、AIの産業・教育への本格的な組み込みを加速させた。
+> GPT-2は高品質なテキスト生成能力でAIの社会的影響を初めて広く認識させ、段階的リリースという慎重なアプローチをとったモデルである。
 
 ---
 
-## GPT-5（2025年8月）
+## GPT-3：スケールが変えた常識（2020年5月）
 
-- **発表**: <span style="color: #2563EB; font-weight: bold;">2025年8月7日</span>
-- **コンテキスト**: ChatGPT最大256K・API最大400Kトークン
-- **特徴**:
-  - **自動ルーティング**: タスクに応じ高速モデル/推論モデルを自動選択
-  - テキスト・画像・音声・動画のネイティブ統合処理
-  - 幻覚（ハルシネーション）をGPT-4o比で<span style="color: #2563EB; font-weight: bold;">約45%削減</span>
-  - 数学(AIME 2025: 94.6%)・コーディング(SWE-bench: 74.9%)でSoTA達成
-  - 全ChatGPTユーザーに<span style="color: #2563EB; font-weight: bold;">無料提供</span>（Plusは高利用上限、Proは無制限）
+- **発表日**：<span style="color: #2563EB; font-weight: bold;">2020年5月28日</span>（論文公開）、同年6月にAPIベータ公開
+- **パラメータ数**：<span style="color: #2563EB; font-weight: bold;">1750億（175B）</span> ― GPT-2の約117倍
+- Common Crawl等のWebデータ（約570GB）で学習
+- **フューショット学習**（Few-shot learning）：少数例を示すだけで多様なタスクに対応
+- 文章生成・質問応答・コード生成・翻訳などを高精度で実行
+- GPT-3 APIを通じて多数のスタートアップ・サービスが誕生
 
-> GPT-5は高速推論と深い思考を1モデルに統合し、精度・マルチモーダル・エージェント能力で前世代を大きく超えた。
+> GPT-3は桁違いのスケールによってフューショット学習を実現し、LLM活用の産業的可能性を世界に示した転換点となるモデルである。
 
 ---
 
-## GPT各モデル比較まとめ
+## GPT-3.5：対話AIの夜明け（2022年）
 
-| モデル | 発表年月 | パラメータ数 | 主な革新 |
-|--------|---------|------------|---------|
-| GPT-1 | 2018年 | 117M | 事前学習＋ファインチューニング |
-| GPT-2 | 2019年2月 | 1.5B | ゼロショット学習・安全性議論 |
-| GPT-3 | 2020年5月 | 175B | Few-Shot学習・LLM時代の幕開け |
-| GPT-3.5 | 2022年11月 | 非公開 | RLHF・ChatGPT公開 |
-| GPT-4 | 2023年3月 | 非公開 | マルチモーダル・高度推論 |
-| GPT-5 | 2025年8月 | 非公開 | 統合マルチモーダル・自動ルーティング |
+- **GPT-3.5 API公開**：<span style="color: #2563EB; font-weight: bold;">2022年3月</span>
+- **ChatGPTとして一般公開**：<span style="color: #2563EB; font-weight: bold;">2022年11月30日</span>
+- **RLHF**（人間のフィードバックによる強化学習）を導入し、指示への追従性を大幅改善
+- 有害なコンテンツの拒否・倫理的配慮が向上
+- ChatGPT公開後5日で**100万ユーザー**、2ヶ月で**1億ユーザー**を突破
+- <span style="color: #2563EB; font-weight: bold;">史上最速</span>で1億ユーザーを獲得したコンシューマーアプリとなった
 
-> GPTシリーズは規模・学習手法・安全性・マルチモーダル性の面で一貫して進化し続けている。
+> GPT-3.5はRLHFによる人間との対話最適化でChatGPTを生み出し、生成AIを一般社会に普及させた歴史的なモデルである。
+
+---
+
+## GPT-4：マルチモーダルへの進化（2023年3月）
+
+- **発表日**：<span style="color: #2563EB; font-weight: bold;">2023年3月14日</span>
+- テキストだけでなく**画像も入力として理解**できるマルチモーダルモデル
+- 複雑な推論・長文理解・コード生成の精度が大幅向上
+- 安全性・信頼性の向上（ハルシネーション低減、有害コンテンツ抑制）
+- <span style="color: #2563EB; font-weight: bold;">Microsoft Copilot・GitHub Copilot・Duolingo・Khan Academy</span>などに採用
+- 後にGPT-4o（2024年5月・音声/画像/テキストのリアルタイム処理）へと発展
+
+> GPT-4は画像理解を備えたマルチモーダル能力と高度な推論で、企業・教育・開発など幅広い分野のAI活用を加速させたモデルである。
+
+---
+
+## GPT-5：統合知性の時代（2025年8月）
+
+- **発表日**：<span style="color: #2563EB; font-weight: bold;">2025年8月7日</span>
+- テキスト・画像・音声・動画を統合的に処理する**フルマルチモーダル**
+- **スマートルーティング**：問いの複雑さに応じて高速モードと推論モードを自動切替
+- ハルシネーション率がGPT-4o比で<span style="color: #2563EB; font-weight: bold;">約45%低減</span>（Web検索有効時）
+- コンテキストウィンドウ：ChatGPTで最大256Kトークン、APIで最大400Kトークン
+- 数学(AIME 2025: 94.6%)・コーディング(SWE-bench: 74.9%)でSoTA達成
+- 全ユーザーに無料提供（Plusは高使用上限、Proは無制限）
+
+> GPT-5は推論・マルチモーダル・エージェント機能を統合した統一モデルで、AIがより自律的に複雑な課題を解決する新時代を切り開いた。
+
+---
+
+## GPTモデル進化の全体像
+
+<svg width="580" height="150">
+  <line x1="50" y1="125" x2="560" y2="125" stroke="#AAAAAA" stroke-width="2"/>
+  <rect x="55" y="110" width="55" height="15" rx="3" fill="#4A5568"/>
+  <text x="82" y="122" text-anchor="middle" fill="white" font-size="11">GPT-1</text>
+  <text x="82" y="143" text-anchor="middle" fill="#333333" font-size="11">2018/6</text>
+  <rect x="145" y="98" width="55" height="27" rx="3" fill="#4A5568"/>
+  <text x="172" y="116" text-anchor="middle" fill="white" font-size="11">GPT-2</text>
+  <text x="172" y="143" text-anchor="middle" fill="#333333" font-size="11">2019/2</text>
+  <rect x="235" y="70" width="55" height="55" rx="3" fill="#4A5568"/>
+  <text x="262" y="102" text-anchor="middle" fill="white" font-size="11">GPT-3</text>
+  <text x="262" y="143" text-anchor="middle" fill="#333333" font-size="11">2020/5</text>
+  <rect x="325" y="55" width="55" height="70" rx="3" fill="#4A5568"/>
+  <text x="352" y="94" text-anchor="middle" fill="white" font-size="11">GPT-3.5</text>
+  <text x="352" y="143" text-anchor="middle" fill="#333333" font-size="11">2022/11</text>
+  <rect x="415" y="35" width="55" height="90" rx="3" fill="#4A5568"/>
+  <text x="442" y="84" text-anchor="middle" fill="white" font-size="11">GPT-4</text>
+  <text x="442" y="143" text-anchor="middle" fill="#333333" font-size="11">2023/3</text>
+  <rect x="495" y="10" width="55" height="115" rx="3" fill="#2563EB"/>
+  <text x="522" y="71" text-anchor="middle" fill="white" font-size="11">GPT-5</text>
+  <text x="522" y="143" text-anchor="middle" fill="#333333" font-size="11">2025/8</text>
+  <text x="30" y="128" text-anchor="middle" fill="#AAAAAA" font-size="10">能力</text>
+</svg>
+
+| モデル | 発表 | パラメータ | キーワード |
+|--------|------|-----------|-----------|
+| GPT-1 | 2018/6 | 117M | 事前学習＋ファインチューニング |
+| GPT-2 | 2019/2 | 1.5B | ゼロショット・段階的リリース |
+| GPT-3 | 2020/5 | 175B | フューショット・LLM時代の幕開け |
+| GPT-3.5 | 2022/11 | 非公開 | RLHF・ChatGPT誕生 |
+| GPT-4 | 2023/3 | 非公開 | マルチモーダル・高精度推論 |
+| GPT-5 | 2025/8 | 非公開 | 統合知性・エージェント機能 |
+
+> GPT-1から7年で、研究実証モデルからフルマルチモーダルの統合AIへと劇的に進化した。
 
 ---
 
 ## 参考文献
 
-- [GPT Version Timeline: From GPT-1 to GPT-5.2 - Times of AI](https://www.timesofai.com/industry-insights/gpt-version-timeline/) — 各GPTモデルの発表日・パラメータ数・主要特徴を確認
-- [Introducing GPT-5 | OpenAI](https://openai.com/index/introducing-gpt-5/) — GPT-5の公式発表・機能詳細を確認
-- [GPT-5 - Wikipedia](https://en.wikipedia.org/wiki/GPT-5) — GPT-5の発表日（2025年8月7日）・スペックを確認
-- [GPT-3 - Wikipedia](https://en.wikipedia.org/wiki/GPT-3) — GPT-3の発表日・パラメータ数・特徴を確認
-- [The Complete History of OpenAI Models | Data Science Dojo](https://datasciencedojo.com/blog/the-complete-history-of-openai-models/) — GPT-1〜GPT-4の歴史的経緯を確認
+- [Introducing GPT-5 | OpenAI](https://openai.com/index/introducing-gpt-5/) — GPT-5の発表日・機能の確認
+- [GPT-5 - Wikipedia](https://en.wikipedia.org/wiki/GPT-5) — GPT-5のベンチマーク・コンテキストウィンドウの確認
+- [GPT-3 - Wikipedia](https://en.wikipedia.org/wiki/GPT-3) — GPT-3のパラメータ数・発表日の確認
+- [Generative pre-trained transformer - Wikipedia](https://en.wikipedia.org/wiki/Generative_pre-trained_transformer) — GPT-1〜GPT-4の概要・歴史の確認
+- [The Complete History of OpenAI Models | Data Science Dojo](https://datasciencedojo.com/blog/the-complete-history-of-openai-models/) — 各モデルの発表日・主要特徴の確認
+- [OpenAI & ChatGPT Timeline | scriptbyai.com](https://www.scriptbyai.com/timeline-of-chatgpt/) — GPT各世代の年表確認
 
 > 本資料の参考文献一覧
 
