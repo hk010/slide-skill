@@ -121,27 +121,35 @@ paginate: true
 
 ## 進化の全体像：能力の変遷
 
-<svg width="580" height="270">
-  <line x1="60" y1="230" x2="560" y2="230" stroke="#AAAAAA" stroke-width="2"/>
-  <rect x="65" y="205" width="65" height="25" rx="4" fill="#4A5568"/>
-  <text x="97" y="222" text-anchor="middle" fill="white" font-size="12">GPT-1</text>
-  <text x="97" y="248" text-anchor="middle" fill="#333333" font-size="12">2018/6</text>
-  <rect x="160" y="185" width="65" height="45" rx="4" fill="#4A5568"/>
-  <text x="192" y="212" text-anchor="middle" fill="white" font-size="12">GPT-2</text>
-  <text x="192" y="248" text-anchor="middle" fill="#333333" font-size="12">2019/2</text>
-  <rect x="255" y="140" width="65" height="90" rx="4" fill="#4A5568"/>
-  <text x="287" y="190" text-anchor="middle" fill="white" font-size="12">GPT-3</text>
-  <text x="287" y="248" text-anchor="middle" fill="#333333" font-size="12">2020/5</text>
-  <rect x="350" y="110" width="65" height="120" rx="4" fill="#4A5568"/>
-  <text x="382" y="175" text-anchor="middle" fill="white" font-size="12">GPT-3.5</text>
-  <text x="382" y="248" text-anchor="middle" fill="#333333" font-size="12">2022/11</text>
-  <rect x="445" y="75" width="65" height="155" rx="4" fill="#4A5568"/>
-  <text x="477" y="157" text-anchor="middle" fill="white" font-size="12">GPT-4</text>
-  <text x="477" y="248" text-anchor="middle" fill="#333333" font-size="12">2023/3</text>
-  <rect x="490" y="20" width="65" height="210" rx="4" fill="#2563EB"/>
-  <text x="522" y="120" text-anchor="middle" fill="white" font-size="12">GPT-5</text>
-  <text x="522" y="248" text-anchor="middle" fill="#333333" font-size="12">2025/8</text>
-  <text x="35" y="135" text-anchor="middle" fill="#AAAAAA" font-size="11" transform="rotate(-90,35,135)">能力・規模</text>
+<svg width="580" height="230">
+  <!-- X軸 -->
+  <line x1="50" y1="185" x2="570" y2="185" stroke="#AAAAAA" stroke-width="2"/>
+  <!-- Y軸ラベル -->
+  <text x="18" y="100" text-anchor="middle" fill="#AAAAAA" font-size="11" transform="rotate(-90,18,100)">能力・規模</text>
+  <!-- GPT-1: x=66, w=54, h=20 -->
+  <rect x="66" y="165" width="54" height="20" rx="4" fill="#4A5568"/>
+  <text x="93" y="158" text-anchor="middle" fill="#555555" font-size="11">GPT-1</text>
+  <text x="93" y="202" text-anchor="middle" fill="#333333" font-size="11">2018/6</text>
+  <!-- GPT-2: x=152, w=54, h=45 -->
+  <rect x="152" y="140" width="54" height="45" rx="4" fill="#4A5568"/>
+  <text x="179" y="167" text-anchor="middle" fill="white" font-size="11">GPT-2</text>
+  <text x="179" y="202" text-anchor="middle" fill="#333333" font-size="11">2019/2</text>
+  <!-- GPT-3: x=238, w=54, h=85 -->
+  <rect x="238" y="100" width="54" height="85" rx="4" fill="#4A5568"/>
+  <text x="265" y="147" text-anchor="middle" fill="white" font-size="11">GPT-3</text>
+  <text x="265" y="202" text-anchor="middle" fill="#333333" font-size="11">2020/5</text>
+  <!-- GPT-3.5: x=324, w=54, h=110 -->
+  <rect x="324" y="75" width="54" height="110" rx="4" fill="#4A5568"/>
+  <text x="351" y="134" text-anchor="middle" fill="white" font-size="11">GPT-3.5</text>
+  <text x="351" y="202" text-anchor="middle" fill="#333333" font-size="11">2022/11</text>
+  <!-- GPT-4: x=410, w=54, h=140 -->
+  <rect x="410" y="45" width="54" height="140" rx="4" fill="#4A5568"/>
+  <text x="437" y="119" text-anchor="middle" fill="white" font-size="11">GPT-4</text>
+  <text x="437" y="202" text-anchor="middle" fill="#333333" font-size="11">2023/3</text>
+  <!-- GPT-5: x=496, w=54, h=170 -->
+  <rect x="496" y="15" width="54" height="170" rx="4" fill="#2563EB"/>
+  <text x="523" y="104" text-anchor="middle" fill="white" font-size="11">GPT-5</text>
+  <text x="523" y="202" text-anchor="middle" fill="#333333" font-size="11">2025/8</text>
 </svg>
 
 > GPT-1から7年で、研究実証モデルからフルマルチモーダルの統合AIへと劇的に進化した。
