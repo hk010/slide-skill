@@ -176,6 +176,52 @@ The custom CSS renders it as a bordered, transparent box.
 - Limit highlights to **1–3 per slide** — overuse reduces readability.
 - **Do not** apply highlight spans to title lines (`##`); titles are already visually distinct.
 
+**SVG diagram generation:**
+
+When a slide's content falls into any of the following categories, embed an SVG diagram directly in the Markdown to visualize the concept:
+
+| Category | Examples |
+|---|---|
+| Flow / process | A → B → C sequences |
+| Comparison | Side-by-side contrast of two options |
+| Structure / hierarchy | Parent–child relationships, pyramid diagrams |
+| Numerical trend | Simple bar or line charts showing change |
+
+For all other content (plain lists, text explanations), SVG is **not** required.
+
+**SVG generation rules:**
+
+- **Size**: width ≤ 600 px, height ≤ 180 px.
+- **Colors** — follow the theme palette:
+  - Shape fills: `#4A5568` (dark gray)
+  - Text: `#FFFFFF` (white)
+  - Arrows / lines: `#AAAAAA`
+  - Accent / emphasis: `#2563EB` (blue)
+- **Font**: `sans-serif`; font-size ≥ 13 px (ensures Japanese text renders legibly).
+- **Arrows**: use the `➜` character or SVG `<marker>` elements.
+- **Embed method**: write `<svg>` tags **directly** in the Markdown — do **not** use `<img src="...">`.
+- **Limit**: at most **one SVG per slide**.
+
+**Pattern examples:**
+
+*Flow diagram*
+```markdown
+<svg width="580" height="80">
+  <rect x="10" y="20" width="120" height="40" rx="6" fill="#4A5568"/>
+  <text x="70" y="45" text-anchor="middle" fill="white" font-size="13">ステップ1</text>
+  <text x="145" y="45" text-anchor="middle" fill="#AAAAAA" font-size="20">→</text>
+  <rect x="165" y="20" width="120" height="40" rx="6" fill="#4A5568"/>
+  <text x="225" y="45" text-anchor="middle" fill="white" font-size="13">ステップ2</text>
+  <text x="300" y="45" text-anchor="middle" fill="#AAAAAA" font-size="20">→</text>
+  <rect x="320" y="20" width="120" height="40" rx="6" fill="#2563EB"/>
+  <text x="380" y="45" text-anchor="middle" fill="white" font-size="13">ステップ3</text>
+</svg>
+```
+
+*Comparison diagram* — two side-by-side boxes, each listing bullet characteristics.
+
+*Pyramid diagram* — stacked triangles representing hierarchy levels.
+
 ---
 
 ### ③ References Slide (body slide, placed immediately before the closing slide)

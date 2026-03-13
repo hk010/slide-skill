@@ -17,7 +17,7 @@ section {
   background-color: var(--color-bg);
   color: var(--color-text);
   font-family: sans-serif;
-  padding: 40px 50px 60px;
+  padding: 40px 50px 110px;
   position: relative;
 }
 
@@ -52,12 +52,17 @@ section[data-marpit-pagination]::after {
 
 /* ─── Summary box (body slides) ───────────────────────────────── */
 /* Usage: place a blockquote at the bottom of each body slide.
-   Marp renders > text as <blockquote>. */
+   Marp renders > text as <blockquote>.
+   Fixed at the bottom of the slide, just above CONFIDENTIAL/page number row. */
 section blockquote {
-  border: 1.5px solid var(--color-border);
+  position: absolute;
+  bottom: 48px;
+  left: 16px;
+  right: 16px;
+  margin: 0;
+  padding: 8px 12px;
+  border: 1px solid var(--color-border);
   background: transparent;
-  padding: 8px 16px;
-  margin: 16px 0 0;
   font-size: 0.85em;
   color: var(--color-text);
   border-radius: 2px;
