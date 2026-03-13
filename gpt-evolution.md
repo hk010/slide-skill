@@ -20,21 +20,21 @@ paginate: true
 - 2018年の初代GPT-1から、わずか<span style="color: #2563EB; font-weight: bold;">7年</span>でGPT-5まで急速に進化
 - 各世代でパラメータ数・能力・安全性が大幅に向上
 
-<svg width="580" height="100">
-  <rect x="10" y="30" width="80" height="40" rx="6" fill="#4A5568"/>
-  <text x="50" y="55" text-anchor="middle" fill="white" font-size="13">GPT-1</text>
-  <text x="103" y="55" text-anchor="middle" fill="#AAAAAA" font-size="20">→</text>
-  <rect x="120" y="30" width="80" height="40" rx="6" fill="#4A5568"/>
-  <text x="160" y="55" text-anchor="middle" fill="white" font-size="13">GPT-2</text>
-  <text x="213" y="55" text-anchor="middle" fill="#AAAAAA" font-size="20">→</text>
-  <rect x="230" y="30" width="80" height="40" rx="6" fill="#4A5568"/>
-  <text x="270" y="55" text-anchor="middle" fill="white" font-size="13">GPT-3/3.5</text>
-  <text x="323" y="55" text-anchor="middle" fill="#AAAAAA" font-size="20">→</text>
-  <rect x="340" y="30" width="80" height="40" rx="6" fill="#4A5568"/>
-  <text x="380" y="55" text-anchor="middle" fill="white" font-size="13">GPT-4</text>
-  <text x="433" y="55" text-anchor="middle" fill="#AAAAAA" font-size="20">→</text>
-  <rect x="450" y="30" width="80" height="40" rx="6" fill="#2563EB"/>
-  <text x="490" y="55" text-anchor="middle" fill="white" font-size="13">GPT-5</text>
+<svg width="580" height="140">
+  <rect x="10" y="45" width="95" height="52" rx="7" fill="#4A5568"/>
+  <text x="57" y="76" text-anchor="middle" fill="white" font-size="15">GPT-1</text>
+  <text x="117" y="76" text-anchor="middle" fill="#AAAAAA" font-size="24">→</text>
+  <rect x="125" y="45" width="95" height="52" rx="7" fill="#4A5568"/>
+  <text x="172" y="76" text-anchor="middle" fill="white" font-size="15">GPT-2</text>
+  <text x="232" y="76" text-anchor="middle" fill="#AAAAAA" font-size="24">→</text>
+  <rect x="240" y="45" width="95" height="52" rx="7" fill="#4A5568"/>
+  <text x="287" y="76" text-anchor="middle" fill="white" font-size="15">GPT-3/3.5</text>
+  <text x="347" y="76" text-anchor="middle" fill="#AAAAAA" font-size="24">→</text>
+  <rect x="355" y="45" width="95" height="52" rx="7" fill="#4A5568"/>
+  <text x="402" y="76" text-anchor="middle" fill="white" font-size="15">GPT-4</text>
+  <text x="462" y="76" text-anchor="middle" fill="#AAAAAA" font-size="24">→</text>
+  <rect x="470" y="45" width="95" height="52" rx="7" fill="#2563EB"/>
+  <text x="517" y="76" text-anchor="middle" fill="white" font-size="15">GPT-5</text>
 </svg>
 
 > GPTシリーズはAI技術の急速な進化を象徴するOpenAIの代表的なモデル群である。
@@ -119,33 +119,39 @@ paginate: true
 
 ---
 
-## GPTモデル進化の全体像
+## 進化の全体像：能力の変遷
 
-<svg width="580" height="150">
-  <line x1="50" y1="125" x2="560" y2="125" stroke="#AAAAAA" stroke-width="2"/>
-  <rect x="55" y="110" width="55" height="15" rx="3" fill="#4A5568"/>
-  <text x="82" y="122" text-anchor="middle" fill="white" font-size="11">GPT-1</text>
-  <text x="82" y="143" text-anchor="middle" fill="#333333" font-size="11">2018/6</text>
-  <rect x="145" y="98" width="55" height="27" rx="3" fill="#4A5568"/>
-  <text x="172" y="116" text-anchor="middle" fill="white" font-size="11">GPT-2</text>
-  <text x="172" y="143" text-anchor="middle" fill="#333333" font-size="11">2019/2</text>
-  <rect x="235" y="70" width="55" height="55" rx="3" fill="#4A5568"/>
-  <text x="262" y="102" text-anchor="middle" fill="white" font-size="11">GPT-3</text>
-  <text x="262" y="143" text-anchor="middle" fill="#333333" font-size="11">2020/5</text>
-  <rect x="325" y="55" width="55" height="70" rx="3" fill="#4A5568"/>
-  <text x="352" y="94" text-anchor="middle" fill="white" font-size="11">GPT-3.5</text>
-  <text x="352" y="143" text-anchor="middle" fill="#333333" font-size="11">2022/11</text>
-  <rect x="415" y="35" width="55" height="90" rx="3" fill="#4A5568"/>
-  <text x="442" y="84" text-anchor="middle" fill="white" font-size="11">GPT-4</text>
-  <text x="442" y="143" text-anchor="middle" fill="#333333" font-size="11">2023/3</text>
-  <rect x="495" y="10" width="55" height="115" rx="3" fill="#2563EB"/>
-  <text x="522" y="71" text-anchor="middle" fill="white" font-size="11">GPT-5</text>
-  <text x="522" y="143" text-anchor="middle" fill="#333333" font-size="11">2025/8</text>
-  <text x="30" y="128" text-anchor="middle" fill="#AAAAAA" font-size="10">能力</text>
+<svg width="580" height="270">
+  <line x1="60" y1="230" x2="560" y2="230" stroke="#AAAAAA" stroke-width="2"/>
+  <rect x="65" y="205" width="65" height="25" rx="4" fill="#4A5568"/>
+  <text x="97" y="222" text-anchor="middle" fill="white" font-size="12">GPT-1</text>
+  <text x="97" y="248" text-anchor="middle" fill="#333333" font-size="12">2018/6</text>
+  <rect x="160" y="185" width="65" height="45" rx="4" fill="#4A5568"/>
+  <text x="192" y="212" text-anchor="middle" fill="white" font-size="12">GPT-2</text>
+  <text x="192" y="248" text-anchor="middle" fill="#333333" font-size="12">2019/2</text>
+  <rect x="255" y="140" width="65" height="90" rx="4" fill="#4A5568"/>
+  <text x="287" y="190" text-anchor="middle" fill="white" font-size="12">GPT-3</text>
+  <text x="287" y="248" text-anchor="middle" fill="#333333" font-size="12">2020/5</text>
+  <rect x="350" y="110" width="65" height="120" rx="4" fill="#4A5568"/>
+  <text x="382" y="175" text-anchor="middle" fill="white" font-size="12">GPT-3.5</text>
+  <text x="382" y="248" text-anchor="middle" fill="#333333" font-size="12">2022/11</text>
+  <rect x="445" y="75" width="65" height="155" rx="4" fill="#4A5568"/>
+  <text x="477" y="157" text-anchor="middle" fill="white" font-size="12">GPT-4</text>
+  <text x="477" y="248" text-anchor="middle" fill="#333333" font-size="12">2023/3</text>
+  <rect x="490" y="20" width="65" height="210" rx="4" fill="#2563EB"/>
+  <text x="522" y="120" text-anchor="middle" fill="white" font-size="12">GPT-5</text>
+  <text x="522" y="248" text-anchor="middle" fill="#333333" font-size="12">2025/8</text>
+  <text x="35" y="135" text-anchor="middle" fill="#AAAAAA" font-size="11" transform="rotate(-90,35,135)">能力・規模</text>
 </svg>
 
-| モデル | 発表 | パラメータ | キーワード |
-|--------|------|-----------|-----------|
+> GPT-1から7年で、研究実証モデルからフルマルチモーダルの統合AIへと劇的に進化した。
+
+---
+
+## モデル比較まとめ
+
+| モデル | 発表 | パラメータ | 主な革新 |
+|--------|------|-----------|---------|
 | GPT-1 | 2018/6 | 117M | 事前学習＋ファインチューニング |
 | GPT-2 | 2019/2 | 1.5B | ゼロショット・段階的リリース |
 | GPT-3 | 2020/5 | 175B | フューショット・LLM時代の幕開け |
@@ -153,7 +159,7 @@ paginate: true
 | GPT-4 | 2023/3 | 非公開 | マルチモーダル・高精度推論 |
 | GPT-5 | 2025/8 | 非公開 | 統合知性・エージェント機能 |
 
-> GPT-1から7年で、研究実証モデルからフルマルチモーダルの統合AIへと劇的に進化した。
+> GPTシリーズは規模・学習手法・安全性・マルチモーダル性の面で一貫して進化し続けている。
 
 ---
 

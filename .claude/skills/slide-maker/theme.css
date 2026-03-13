@@ -17,8 +17,19 @@ section {
   background-color: var(--color-bg);
   color: var(--color-text);
   font-family: sans-serif;
-  padding: 40px 50px 110px;
+  padding: 105px 50px 110px;
   position: relative;
+}
+
+/* ─── Fixed title at top of every body slide ───────────────────── */
+section h2 {
+  position: absolute;
+  top: 30px;
+  left: 50px;
+  right: 130px;
+  margin: 0;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--color-border);
 }
 
 /* ─── Dummy LOGO (top-right) — body slides only ────────────────── */
